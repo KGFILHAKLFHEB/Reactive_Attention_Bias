@@ -44,6 +44,19 @@ In '$SAVED_PATH, please put the path to the checkpoint saved in the pre-training
 
 Tuning of ABs using human knowledge is done with the following commands
 ```
-$ python3 -m torch.distributed.launch --nproc_per_node=4 --use_env main_ht.py --model $MODEL --mixup 0.0 --cutmix 0.0 --batch-size 128 --epochs 100 --num_workers 40 --data-path $PATH --data-set CUBGHA --human --finetune $SAVED_PATH --output_dir $SAVE_PATH
+$ python3 -m torch.distributed.launch --nproc_per_node=4 --use_env main_ht.py --model deit_small_patch16_224_12_hum --mixup 0.0 --cutmix 0.0 --batch-size 128 --epochs 100 --num_workers 40 --data-path $PATH --data-set CUBGHA --human --finetune $SAVED_PATH --output_dir $SAVE_PATH
+```
+If you do not use human knowledge, execute the following command.
+```
+$ python3 -m torch.distributed.launch --nproc_per_node=4 --use_env main_ht.py --model deit_small_patch16_224_12 --mixup 0.0 --cutmix 0.0 --batch-size 128 --epochs 100 --num_workers 40 --data-path $PATH --data-set CUBGHA --human --finetune $SAVED_PATH --output_dir $SAVE_PATH
 ```
 In $SAVED_PATH, please put the path to the checkpoint saved in the fine-tuning with CUB-200-2010 or CUB-200-2011.
+
+In addition, the code for tuning using human knowledge has not yet been optimized, so model_ht.py needs to be edited as follows when changing the model.
+```
+6 from IAB_ht import Mlp,PatchEmbed,_cfg
+7 from IAB_ht import VisionTransformer,_cfg
+```
+The above is an example of changing to a model with IAB.
+To change to RAB, change to 'RAB_ht'.
+
