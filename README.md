@@ -11,6 +11,15 @@ CUB-200-2011:https://github.com/cyizhuo/CUB-200-2011-dataset
 
 CUB-GHA:https://github.com/yaorong0921/CUB-GHA
 
+CUB_GHA should be placed in the same directory as the training and validation data of CUB_200_2011.
+Also, please put split.py in the same directory and execute it.
+```
+#CUB_200_2011
+$ls
+CUB_GHA   images.txt    val    images    train    split.py
+$python split.py
+```
+
 ## How to run?
 Pre-training is done with the following commands
 ```
