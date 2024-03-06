@@ -116,7 +116,6 @@ class MyImageFolder11(torchvision.datasets.ImageFolder):
         at_path = path.split("/")
         # print(at_path[6])
         at_path[6] = "GHA"
-        # at_path[6] = "ViT_attBX_CUB2011"
         #print(at_path)
         # at_path[8],_ = at_path[8].split(".")
         # del at_path[6]
@@ -203,19 +202,13 @@ def build_dataset(is_train, args):
         dataset = datasets.ImageFolder(root, transform=transform)
         nb_classes = 200
     elif args.data_set == 'CUBATT':
-        # root = os.path.join(args.data_path, 'ViT_attBX_CUB2010' if is_train else 'val')
         root = os.path.join(args.data_path, 'train_bubbles' if is_train else 'val')
         if is_train:
             dataset = MyImageFolder(root, transform=transform)
         else:
             dataset = datasets.ImageFolder(root,transform=transform)
         nb_classes = 200
-    elif args.data_set == 'CUB11':
-        root = os.path.join(args.data_path, 'train' if is_train else 'val')
-        dataset = datasets.ImageFolder(root, transform=transform)
-        nb_classes = 200
-    elif args.data_set == 'CUB11SEG':
-        # root = os.path.join(args.data_path, 'ViT_attBX_CUB2011' if is_train else 'val')
+    elif args.data_set == 'CUB11ATT':
         root = os.path.join(args.data_path, 'train' if is_train else 'val')
         if is_train:
             dataset = MyImageFolder11(root, transform=transform)
