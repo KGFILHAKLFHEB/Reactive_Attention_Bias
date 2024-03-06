@@ -3,16 +3,8 @@ from torch import nn as nn
 from functools import partial
 
 from timm.data import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
-#from timm.models.vision_transformer import Mlp,PatchEmbed, _cfg
-#from vision_transformer import Mlp,PatchEmbed,_cfg
 from vit_attBs import Mlp,PatchEmbed,_cfg
-#from vpt import Mlp,PatchEmbed,_cfg
-#from vth3 import Mlp,PatchEmbed,_cfg
-#from timm.models.vision_transformer import VisionTransformer, _cfg
-#from vision_transformer import VisionTransformer, _cfg
 from vit_attBs import VisionTransformer, _cfg
-#from vpt import VisionTransformer,_cfg
-#from vth3 import VisionTransformer,_cfg
 from timm.models.helpers import build_model_with_cfg, checkpoint_seq
 from timm.models.registry import register_model
 from timm.models.layers import trunc_normal_,DropPath
@@ -113,7 +105,7 @@ def deit_small_patch16_224_12(pretrained=False, **kwargs):
 
 
 @register_model
-def deit_small_patch16_224_12_attB(pretrained=False, **kwargs):
+def deit_small_patch16_224_12_IAB(pretrained=False, **kwargs):
     """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
     ImageNet-1k weights from https://github.com/facebookresearch/deit.
     """
@@ -123,7 +115,7 @@ def deit_small_patch16_224_12_attB(pretrained=False, **kwargs):
 
 
 @register_model
-def deit_small_patch16_224_12_attBL2(pretrained=False, **kwargs):
+def deit_small_patch16_224_12_RAB(pretrained=False, **kwargs):
     """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
     ImageNet-1k weights from https://github.com/facebookresearch/deit.
     """
@@ -133,73 +125,12 @@ def deit_small_patch16_224_12_attBL2(pretrained=False, **kwargs):
 
 
 @register_model
-def deit_small_patch16_224_12_attBX(pretrained=False, **kwargs):
+def deit_small_patch16_224_12_LRAB(pretrained=False, **kwargs):
     """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
     ImageNet-1k weights from https://github.com/facebookresearch/deit.
     """
     model_kwargs = dict(patch_size=16, embed_dim=384, depth=12, num_heads=6,A_use=True, att_use=True, **kwargs)
     model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-
-@register_model
-def deit_small_patch16_224_12_reg(pretrained=False, **kwargs):
-    """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
-    ImageNet-1k weights from https://github.com/facebookresearch/deit.
-    """
-    model_kwargs = dict(patch_size=16, embed_dim=384, depth=12, num_heads=6, **kwargs, num_reg=1)
-    model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-@register_model
-def deit_small_patch16_224_12_reg_2(pretrained=False, **kwargs):
-    """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
-    ImageNet-1k weights from https://github.com/facebookresearch/deit.
-    """
-    model_kwargs = dict(patch_size=16, embed_dim=384, depth=12, num_heads=6, **kwargs, num_reg=2)
-    model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-@register_model
-def deit_small_patch16_224_12_reg_4(pretrained=False, **kwargs):
-    """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
-    ImageNet-1k weights from https://github.com/facebookresearch/deit.
-    """
-    model_kwargs = dict(patch_size=16, embed_dim=384, depth=12, num_heads=6, **kwargs,num_reg=4)
-    model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-@register_model
-def deit_small_patch16_224_12_reg_8(pretrained=False, **kwargs):
-    """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
-    ImageNet-1k weights from https://github.com/facebookresearch/deit.
-    """
-    model_kwargs = dict(patch_size=16, embed_dim=384, depth=12, num_heads=6, **kwargs,num_reg=8)
-    model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-@register_model
-def deit_small_patch16_224_12_reg_16(pretrained=False, **kwargs):
-    model_kwargs = dict(patch_size=16,embed_dim=384, depth=12, num_heads=6, **kwargs,num_reg=16)
-    model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-@register_model
-def deit_small_patch16_224_2(pretrained=False, **kwargs):
-    """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
-    ImageNet-1k weights from https://github.com/facebookresearch/deit.
-    """
-    model_kwargs = dict(patch_size=16, embed_dim=384, depth=16, num_heads=6, depth_token_only=2, **kwargs)
-    model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-@register_model
-def deit_small_patch16_224_A3(pretrained=False, **kwargs):
-    """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
-    ImageNet-1k weights from https://github.com/facebookresearch/deit.
-    """
-    model_kwargs = dict(patch_size=16, embed_dim=384, depth=16, num_heads=6 ,depth_token_only=1 ,depth_Att=3 , **kwargs)
-    model = _create_deit('deit_tiny_patch16_224', pretrained=pretrained, **model_kwargs)
     return model
 
 
