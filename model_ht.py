@@ -3,15 +3,7 @@ from torch import nn as nn
 from functools import partial
 
 from timm.data import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
-#from timm.models.vision_transformer import Mlp,PatchEmbed, _cfg
-#from vision_transformer import Mlp,PatchEmbed,_cfg
-#from vit_attBX import Mlp,PatchEmbed,_cfg
-#from vpt import Mlp,PatchEmbed,_cfg
 from vthaX import Mlp,PatchEmbed,_cfg
-#from timm.models.vision_transformer import VisionTransformer, _cfg
-#from vision_transformer import VisionTransformer, _cfg
-#from vit_attBX import VisionTransformer, _cfg
-#from vpt import VisionTransformer,_cfg
 from vthaX import VisionTransformer,_cfg
 from timm.models.helpers import build_model_with_cfg, checkpoint_seq
 from timm.models.registry import register_model
@@ -128,67 +120,6 @@ def deit_small_patch16_224_12_hum(pretrained=False, **kwargs):
     """
     model_kwargs = dict(patch_size=16, embed_dim=384, depth=12, num_heads=6,use_human=True, **kwargs)
     model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-
-@register_model
-def deit_small_patch16_224_12_reg(pretrained=False, **kwargs):
-    """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
-    ImageNet-1k weights from https://github.com/facebookresearch/deit.
-    """
-    model_kwargs = dict(patch_size=16, embed_dim=384, depth=12, num_heads=6, **kwargs, num_reg=1)
-    model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-@register_model
-def deit_small_patch16_224_12_reg_2(pretrained=False, **kwargs):
-    """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
-    ImageNet-1k weights from https://github.com/facebookresearch/deit.
-    """
-    model_kwargs = dict(patch_size=16, embed_dim=384, depth=12, num_heads=6, **kwargs, num_reg=2)
-    model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-@register_model
-def deit_small_patch16_224_12_reg_4(pretrained=False, **kwargs):
-    """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
-    ImageNet-1k weights from https://github.com/facebookresearch/deit.
-    """
-    model_kwargs = dict(patch_size=16, embed_dim=384, depth=12, num_heads=6, **kwargs,num_reg=4)
-    model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-@register_model
-def deit_small_patch16_224_12_reg_8(pretrained=False, **kwargs):
-    """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
-    ImageNet-1k weights from https://github.com/facebookresearch/deit.
-    """
-    model_kwargs = dict(patch_size=16, embed_dim=384, depth=12, num_heads=6, **kwargs,num_reg=8)
-    model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-@register_model
-def deit_small_patch16_224_12_reg_16(pretrained=False, **kwargs):
-    model_kwargs = dict(patch_size=16,embed_dim=384, depth=12, num_heads=6, **kwargs,num_reg=16)
-    model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-@register_model
-def deit_small_patch16_224_2(pretrained=False, **kwargs):
-    """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
-    ImageNet-1k weights from https://github.com/facebookresearch/deit.
-    """
-    model_kwargs = dict(patch_size=16, embed_dim=384, depth=16, num_heads=6, depth_token_only=2, **kwargs)
-    model = _create_deit('deit_small_patch16_224', pretrained=pretrained, **model_kwargs)
-    return model
-
-@register_model
-def deit_small_patch16_224_A3(pretrained=False, **kwargs):
-    """ DeiT-tiny model @ 224x224 from paper (https://arxiv.org/abs/2012.12877).
-    ImageNet-1k weights from https://github.com/facebookresearch/deit.
-    """
-    model_kwargs = dict(patch_size=16, embed_dim=384, depth=16, num_heads=6 ,depth_token_only=1 ,depth_Att=3 , **kwargs)
-    model = _create_deit('deit_tiny_patch16_224', pretrained=pretrained, **model_kwargs)
     return model
 
 
