@@ -22,7 +22,7 @@ from losses import ABNViTLoss
 from samplers import RASampler
 from augment import new_data_aug_generator
 
-import model_hft
+import model_ht
 
 import utils
 
