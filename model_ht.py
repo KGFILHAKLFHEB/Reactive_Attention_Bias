@@ -3,8 +3,8 @@ from torch import nn as nn
 from functools import partial
 
 from timm.data import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
-from vthaX import Mlp,PatchEmbed,_cfg
-from vthaX import VisionTransformer,_cfg
+from LRAB_ht import Mlp,PatchEmbed,_cfg
+from LRAB_ht import VisionTransformer,_cfg
 from timm.models.helpers import build_model_with_cfg, checkpoint_seq
 from timm.models.registry import register_model
 from timm.models.layers import trunc_normal_,DropPath
