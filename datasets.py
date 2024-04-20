@@ -208,7 +208,7 @@ def build_dataset(is_train, args):
         else:
             dataset = datasets.ImageFolder(root,transform=transform)
         nb_classes = 200
-    elif args.data_set == 'CUB11ATT':
+    elif args.data_set == 'CUBGHA':
         root = os.path.join(args.data_path, 'train' if is_train else 'val')
         if is_train:
             dataset = MyImageFolder11(root, transform=transform)
