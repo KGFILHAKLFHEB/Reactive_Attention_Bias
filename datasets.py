@@ -115,7 +115,7 @@ class MyImageFolder11(torchvision.datasets.ImageFolder):
         # Attention mapの読み込み
         at_path = path.split("/")
         # print(at_path[6])
-        at_path[6] = "GHA"
+        at_path[5] = "GHA"
         #print(at_path)
         # at_path[8],_ = at_path[8].split(".")
         # del at_path[6]
