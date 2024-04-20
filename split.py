@@ -21,6 +21,6 @@ cls = sorted(os.listdir('./images/'))
 for c in cls:
     os.makedirs(f'./GHA/{c}', exist_ok=True)
 count = 1
-for p in paths:
+for path in paths:
     shutil.copy(f'./CUB_GHA/{count}.jpg',f'./{path}')
     count+=1
